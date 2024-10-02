@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>22MIC0019 - E-Commerce Website</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!--linking font-family-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .montserrat {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+
+      .custom-icon {
+        color: darkgrey;
+        font-size: 1.5rem;
+      }
+      .custom-icon:hover {
+        color: darkblue;
+      }
+
+      .custom-link {
+        color: rgb(130, 130, 130);
+        text-decoration: none;
+      }
+      .custom-link:hover {
+        color: darkblue;
+      }
+
+      .custom-translatey-nav {
+        transform: translateY(-10px);
+      }
+
+      .navbar-toggler-icon {
+        background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"%3E%3Cpath stroke="darkgrey" stroke-width="2" d="M5 15h20M15 5h10M15 25h10" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E'); /* X icon */
+      }
+
+      .navbar-toggler:focus,
+      .navbar-toggler:active {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      .navbar-toggler.open .navbar-toggler-icon {
+        background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"%3E%3Cpath stroke="darkgrey" stroke-width="1.5" d="M5 5 L25 25 M25 5 L5 25" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+      }
+
+      .navbar.scrolled {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+      }
+
+      .carousel-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(75, 71, 71, 0.433);
+        z-index: 1;
+      }
+
+      .corousel-item img {
+        position: relative;
+        z-index: 0;
+      }
+
+      .carousel-caption {
+        text-align: left;
+        left: 10%;
+        right: auto;
+        z-index: 2;
+      }
+      .carousel-btn {
+        color: #ffffff;
+        border: solid 1px #e0e0e0;
+        background-color: transparent;
+        transition: all 0.3s ease;
+      }
+
+      .carousel-btn:hover {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Almost white background */
+        color: #333333; /* Dark grey text for better contrast */
+        border-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Match border with background */
+      }
+
+      .scroll-container {
+        overflow: hidden;
+      }
+
+      .scrolling-items {
+        display: flex;
+        animation: scroll 15s linear infinite;
+      }
+
+      .scrolling-item {
+        flex: 0 0 auto;
+        width: 250px;
+        margin-right: 15px;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Double the items to ensure continuous scrolling */
+      .scrolling-items::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .svg-icon {
+        width: 80px;
+        height: 80px;
+      }
+
+      .main-btn {
+        color: #393839;
+        background-color: transparent;
+        border: solid 1px #393839;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+
+      .main-btn:hover {
+        background-color: #393839;
+        color: white;
+        border-color: #393839;
+      }
+
+      .section-two-content,
+      .section-three-content {
+        background: linear-gradient(135deg, #dadbdc, #b0b0b0, #6b6b6b, #393839);
+        color: #333333;
+      }
+
+      .section-two-content h1,
+      .section-three-content h1 {
+        margin: 3rem 0rem 0rem 3rem;
+      }
+
+      .section-two-feature {
+        margin-left: 2.5rem;
+      }
+
+      .section-two-feature img {
+        margin: 3rem 2rem 0 0;
+      }
+
+      .section-two-content h3 {
+        margin: 4rem 0 0 0;
+      }
+
+      .section-two-content p {
+        margin: 1rem 5rem 0 0;
+      }
+
+      .section-three {
+        margin-top: 6rem;
+        margin-bottom: 6rem;
+      }
+
+      .section-three-content p {
+        margin: 1rem 5rem 1.5rem 3rem;
+      }
+
+      hr.mx-auto {
+        width: 60px; /* Controls the width of the divider */
+        border: 1px solid #000000; /* Adjust the thickness and color */
+        margin-top: -1rem;
+        margin-bottom: 1.5rem; /* Adjust spacing */
+      }
+
+      .testimonial-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #333333;
+      }
+      .profile-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+      .testimonial-content {
+        display: flex;
+        align-items: center;
+        color: #333333;
+      }
+
+      .search-bar {
+        border-radius: 0px;
+      }
+
+      .product-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #dadbdc;
+        transition: transform 0.2s ease;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 6px 12px rgba(165, 128, 94, 0.2);
+      }
+
+      .product-card:hover {
+        border-color: rgba(165, 128, 94);
+        box-shadow: 0 6px 12px rgba(165, 128, 94, 0.4);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        transition: transform 0.5s ease;
+      }
+
+      .product-card img:hover {
+        transform: scale(1.2);
+      }
+
+      .product-image {
+        overflow: hidden;
+      }
+
+      .product-brief {
+        padding: 20px 0px 10px 10px;
+        z-index: 4;
+      }
+
+      .offer-badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: white;
+        color: #7e7e7e;
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .quick-view {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.619);
+        color: #393839;
+        padding: 10px;
+        border-radius: 50%;
+        display: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .product-card:hover .quick-view {
+        display: block;
+      }
+
+      .price {
+        color: #888;
+        text-decoration: line-through;
+      }
+
+      .price-new {
+        color: #393839;
+        font-weight: bold;
+      }
+
+      .quantity-control {
+        display: flex;
+        align-items: center;
+      }
+
+      .connect-section {
+        position: relative;
+        height: 30vh;
+        width: 100%;
+        background-image: url("images/furniture-store.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      }
+
+      .dark-overlay {
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .connect-heading {
+        color: #beb5b5;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .social-icons .social-btn {
+        display: inline-block;
+      }
+
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        color: rgb(0, 0, 0);
+        padding: 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .social-icon:hover {
+        background-color: rgb(145, 143, 143);
+      }
+
+      .social-icon .inner-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #dadbdc, #b0b0b0, #6b6b6b, #393839);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .social-icon i {
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .connect-heading {
+          font-size: 1.8rem;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .social-icon .inner-icon {
+          width: 30px;
+          height: 30px;
+        }
+
+        .social-icon i {
+          font-size: 1.2rem;
+        }
+      }
+
+      .map-container {
+        height: 450px;
+        background-color: #f1f1f1;
+        position: relative;
+      }
+
+      .shadow-lg {
+        box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2) !important;
+      }
+
+      .faq h5 {
+        font-weight: bold;
+        color: #2b2b2b;
+      }
+
+      .faq p {
+        color: #555;
+      }
+
+      .fw-bold {
+        font-weight: 700;
+      }
+
+      /* Form Enhancements */
+      .form-control {
+        font-size: 1rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+      }
+
+      textarea {
+        resize: none;
+      }
+    </style>
+  </head>
+  <body class="container-fluid">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md container-fluid fixed-top bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand montserrat fw-400" href="#"
+          ><span class="fs-2">&bull;</span> D<span
+            class="p-1 bg-dark text-white rounded-circle"
+            >E C O</span
+          >R
+          <span class="px-1"> SHOP </span>
+          <span class="fs-2">&bull;</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          id="navbarToggler"
+        >
+          <span class="navbar-toggler-icon justify-content-end"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav fs-5">
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="#" id="showHome">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="showProducts">Products</a>
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="#" id="showContactUs">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-none d-md-inline">
+          <ul class="navbar-nav fs-5 list-group list-group-horizontal">
+            <li class="nav-item px-5">
+              <!-- Sign In button -->
+              <a href="#" class="custom-link">
+                <!-- Show 'Sign In' on medium screens and above -->
+                <i class="fas fa-user-circle custom-icon"></i>
+                <span class="custom-translatey-nav text-nowrap">Sign In</span>
+                <!-- Show an icon on small screens and below -->
+                <!-- <i class="fas fa-user-circle custom-icon d-md-none"></i> -->
+              </a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="#" class="custom-link">
+                <i class="fa-solid fa-cart-plus custom-icon"></i>
+                <span class="text-nowrap">Cart Items</span>
+                <!-- <i class="fa-solid fa-cart-plus custom-icon d-md-none"></i> -->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="home" style="padding-top: 80px">
+      <!-- Carousel -->
+
+      <!-- The slideshow/carousel -->
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="ratio ratio-16x9">
+              <img
+                src="images/carousel1.jpg"
+                class="d-block w-100"
+                alt="Slide 1"
+              />
+            </div>
+            <div class="carousel-caption">
+              <h2 class="display-6 display-md-5 display-lg-4">
+                Welcome to Our Services
+              </h2>
+              <p class="lead fs-6 fs-md-5">
+                Explore the best features and offers we provide.
+              </p>
+              <a href="#" class="btn rounded-0 py-3 px-4 carousel-btn"
+                >Explore More</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="ratio ratio-16x9">
+              <img
+                src="images/carousel2.jpg"
+                class="d-block w-100"
+                alt="Slide 2"
+              />
+            </div>
+            <div class="carousel-caption">
+              <h2 class="display-6 display-md-5 display-lg-4">Our Products</h2>
+              <p class="lead fs-6 fs-md-5">
+                Check out our wide range of high-quality products.
+              </p>
+              <a href="#" class="btn rounded-0 py-3 px-4 carousel-btn"
+                >View Products</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="ratio ratio-16x9">
+              <img
+                src="images/carousel3.png"
+                class="d-block w-100"
+                alt="Slide 3"
+              />
+            </div>
+            <div class="carousel-caption">
+              <h2 class="display-6 display-md-5 display-lg-4">
+                Why Choose Us?
+              </h2>
+              <p class="lead fs-6 fs-md-5">
+                Learn more about why we are the best choice for you.
+              </p>
+              <a href="#" class="btn rounded-0 py-3 px-4 carousel-btn"
+                >About Us</a
+              >
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="container-fluid scroll-container">
+        <div class="scrolling-items">
+          <!-- Bootstrap columns to make grid items -->
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/exp-cert.svg" />
+            </div>
+            <div class="d-flex justify-content-center">
+              10 Years Of Expertise
+            </div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/delivery.svg" />
+            </div>
+            <div class="d-flex justify-content-center">Flexible Delivery</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/installation.svg" />
+            </div>
+            <div class="d-flex justify-content-center">Free Installation</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/customer-service.svg" />
+            </div>
+            <div class="d-flex justify-content-center">After Sales Support</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/warranty.svg" />
+            </div>
+            <div class="d-flex justify-content-center">5 Years Warranty</div>
+          </div>
+          <!-- Duplicate items for infinite scrolling effect -->
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/exp-cert.svg" />
+            </div>
+            <div class="d-flex justify-content-center">
+              10 Years Of Expertise
+            </div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/delivery.svg" />
+            </div>
+            <div class="d-flex justify-content-center">Flexible Delivery</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/installation.svg" />
+            </div>
+            <div class="d-flex justify-content-center">Free Installation</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/customer-service.svg" />
+            </div>
+            <div class="d-flex justify-content-center">After Sales Support</div>
+          </div>
+          <div class="scrolling-item p-3">
+            <div class="d-flex justify-content-center">
+              <img src="images/warranty.svg" />
+            </div>
+            <div class="d-flex justify-content-center">5 Years Warranty</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Section -->
+      <div
+        class="banner-section d-flex flex-column justify-content-center align-items-center my-5"
+      >
+        <header
+          class="banner d-flex justify-content-center align-items-center mt-5"
+        >
+          <h1 class="ms-2">
+            Welcome to<a class="navbar-brand montserrat fw-400" href="#"
+              ><span class="fs-1"> &#9;&bull;</span> D<span
+                class="p-1 bg-dark text-white rounded-circle"
+                >E C O</span
+              >R
+              <span class="px-1"> SHOP </span>
+              <span class="fs-2">&bull;</span></a
+            >
+          </h1>
+        </header>
+
+        <!-- About Section -->
+        <section class="container my-4">
+          <div class="row text-center">
+            <h2>Shop the Latest Trends</h2>
+            <p>
+              Browse our extensive collection of modern antiques, dining sets,
+              and more.
+            </p>
+          </div>
+        </section>
+
+        <div class="btn main-btn rounded-0 py-3 px-4 mb-5">Get Started!</div>
+      </div>
+
+      <div
+        class="section-two container-fluid mb-5 h-100 d-flex justify-content-center align-items-center"
+      >
+        <div class="row h-100">
+          <!-- Left side: Picture -->
+          <div class="d-none d-md-inline col-md-6 p-0">
+            <img
+              src="images/main-pic1.png"
+              class="img-fluid w-100 h-100 object-fit-cover"
+              alt="Responsive image"
+            />
+          </div>
+          <!-- Right side: Content -->
+          <div
+            class="section-two-content col-12 col-md-6 d-flex justify-content-center align-items-center"
+          >
+            <div class="montserrat mb-5">
+              <h1>Permanent Exhibitions</h1>
+              <div
+                class="section-two-feature d-flex justify-content-center align-items-center"
+              >
+                <img src="images/chair.svg" />
+                <div class="section-two-feature-content">
+                  <h3>Unique & Minimal Design</h3>
+                  <p>
+                    Quae semper modi tenetur sem suscipit corporis. Cupidatat
+                    facilisis pariatur venena
+                  </p>
+                </div>
+              </div>
+              <div
+                class="section-two-feature d-flex justify-content-center align-items-center"
+              >
+                <img src="images/sofa.svg" />
+                <div class="section-two-feature-content">
+                  <h3>Unique & Minimal Design</h3>
+                  <p>
+                    Quae semper modi tenetur sem suscipit corporis. Cupidatat
+                    facilisis pariatur venena
+                  </p>
+                </div>
+              </div>
+              <div
+                class="section-two-feature d-flex justify-content-center align-items-center"
+              >
+                <img src="images/sofa-chair.svg" />
+                <div class="section-two-feature-content">
+                  <h3>Crafted Carefully</h3>
+                  <p>
+                    Quae semper modi tenetur sem suscipit corporis. Cupidatat
+                    facilisis pariatur venena
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid h-100">
+        <div
+          class="section-three row h-100 d-flex flex-row-reverse justify-content-center align-items-stretch"
+        >
+          <!-- Right side: Picture -->
+          <div class="col-12 col-md-6 p-0">
+            <img
+              src="images/home-sofa-set.jpg"
+              class="img-fluid w-100 h-100 object-fit-cover"
+              alt="Responsive image"
+            />
+          </div>
+          <!-- Left side: Content -->
+          <div
+            class="section-three-content col-12 col-md-6 p-0 montserrat d-flex flex-column justify-content-center"
+          >
+            <h1>Repellat Montes!</h1>
+            <p>
+              Quae semper modi tenetur sem suscipit corporis. Cupidatat
+              facilisis pariatur venena
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid mt-5 montserrat">
+        <h2 class="text-center mb-5 fs-2">Testimonials</h2>
+        <hr class="mx-auto bg-dark" />
+        <div class="row">
+          <!-- Testimonial 1 -->
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="fs-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div class="testimonial-content ms-5">
+                <img
+                  src="images/profile1.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+                <div>
+                  <h5 class="m-0">Patricia Warren</h5>
+                  <small>CEO, Company</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="fs-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div class="testimonial-content ms-5">
+                <img
+                  src="images/profile2.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+                <div>
+                  <h5 class="m-0">Alice Jhonson</h5>
+                  <small>Marketing Manager, Company</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="fs-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div class="testimonial-content ms-5">
+                <img
+                  src="images/profile3.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+                <div>
+                  <h5 class="m-0">Paul Smitten</h5>
+                  <small>Product Designer, Company</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Product Page-->
+    <div
+      id="products"
+      class="montserrat"
+      style="display: none; padding-top: 80px"
+    >
+      <div class="d-flex justify-content-between mt-5">
+        <h2 class="ms-3">Our Products</h2>
+        <div class="btn main-btn rounded-0 py-3 px-4">
+          <img src="images/slider-h.svg" class="mx-1" /> Filter By Category
+        </div>
+      </div>
+      <div class="row">
+        <!-- Product cards or content goes here -->
+        <!-- Search bar -->
+        <div class="container my-4">
+          <input
+            type="text"
+            id="searchBar"
+            class="form-control search-bar"
+            placeholder="Search products..."
+          />
+        </div>
+
+        <!-- Products Grid -->
+        <div class="container">
+          <div class="row" id="productGrid">
+            <!-- Product cards will be inserted here dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contactUs" style="display: none; padding-top: 80px">
+      <h2 class="ms-3 my-5 montserrat">Contact Us!</h2>
+      <hr />
+
+      <div class="container-fluid my-5">
+        <!-- "Can't find what you're looking for?" Section -->
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Can't find what you're looking for?</h2>
+        </div>
+
+        <!-- Support/Pre-sales/Product Knowledge Section -->
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <div class="p-4 rounded shadow-sm border border-primary">
+              <i class="fas fa-headset fa-3x mb-3 text-primary"></i>
+              <h5 class="fw-bold">Our Support</h5>
+              <p class="text-muted">We're here to help, 24/7.</p>
+              <a href="#" class="btn btn-outline-primary rounded-0 py-2 px-4"
+                >Get Support</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="p-4 rounded shadow-sm border border-warning">
+              <i class="fas fa-question-circle fa-3x mb-3 text-warning"></i>
+              <h5 class="fw-bold">Pre-sales Questions</h5>
+              <p class="text-muted">Get in touch before you buy.</p>
+              <a href="#" class="btn btn-outline-warning rounded-0 py-2 px-4"
+                >Get in Touch</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="p-4 rounded shadow-sm border border-success">
+              <i class="fas fa-book fa-3x mb-3 text-success"></i>
+              <h5 class="fw-bold">Product Knowledge</h5>
+              <p class="text-muted">Find product-related answers.</p>
+              <a href="#" class="btn btn-outline-success rounded-0 py-2 px-4"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        <!-- Get In Touch Form -->
+        <h3 class="mt-5 mb-4 text-center fw-bold">Get In Touch</h3>
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control mb-4 p-3 rounded-0 shadow-sm"
+              placeholder="Enter your name"
+              required
+            />
+            <input
+              type="email"
+              class="form-control mb-4 p-3 rounded-0 shadow-sm"
+              placeholder="Enter your email"
+              required
+            />
+            <input
+              type="text"
+              class="form-control mb-4 p-3 rounded-0 shadow-sm"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <textarea
+              class="form-control mb-4 p-3 rounded-0 shadow-sm"
+              rows="8"
+              placeholder="Enter your feedback or query"
+              required
+            ></textarea>
+          </div>
+          <div class="col-12 text-center">
+            <button class="btn main-btn btn-lg rounded-0 px-5 py-3">
+              Send
+            </button>
+          </div>
+        </div>
+        <hr />
+
+        <!-- Our Branches and Location (Map) -->
+        <h3 class="mt-5 mb-4 text-center fw-bold">Our Branches and Location</h3>
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-10">
+            <div
+              class="map-container rounded shadow-lg dark-overlay overflow-hidden"
+            >
+              <iframe
+                class="w-100 h-100"
+                src="https://www.google.com/maps/embed?..."
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!-- Frequently Asked Questions -->
+      <h3 class="mt-5 mb-4 text-center fw-bold">Frequently Asked Questions</h3>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">What is your return policy?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">How can I track my order?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">What payment methods do you accept?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">Do you offer international shipping?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">Lorem ipsum dolor sit?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="faq p-4 rounded border border-warning shadow-sm">
+            <h5 class="fw-bold">Lorem ipsum dolor sit amet?</h5>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatibus dicta iste facere vero laboriosam suscipit velit rem
+              eligendi aperiam facilis ipsam repellat, dolore ab quia fugiat
+              tempore debitis nihil aut?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <!--Social media links-->
+    <div class="connect-section mt-5">
+      <div
+        class="dark-overlay d-flex justify-content-center align-items-center text-center"
+      >
+        <div class="content">
+          <h2 class="connect-heading">Connect With Us</h2>
+          <div class="social-icons d-flex justify-content-center mt-4">
+            <div class="social-btn">
+              <a href="#" class="btn social-icon rounded-0 mx-2">
+                <div class="inner-icon">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+              </a>
+            </div>
+            <div class="social-btn">
+              <a href="#" class="btn social-icon rounded-0 mx-2">
+                <div class="inner-icon">
+                  <i class="fab fa-twitter"></i>
+                </div>
+              </a>
+            </div>
+            <div class="social-btn">
+              <a href="#" class="btn social-icon rounded-0 mx-2">
+                <div class="inner-icon">
+                  <i class="fab fa-google"></i>
+                </div>
+              </a>
+            </div>
+            <div class="social-btn">
+              <a href="#" class="btn social-icon rounded-0 mx-2">
+                <div class="inner-icon">
+                  <i class="fab fa-instagram"></i>
+                </div>
+              </a>
+            </div>
+            <div class="social-btn">
+              <a href="#" class="btn social-icon rounded-0 mx-2">
+                <div class="inner-icon">
+                  <i class="fab fa-pinterest"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="banner-section d-flex flex-column justify-content-center align-items-center my-5"
+    >
+      <!-- Link to Contact us Section -->
+      <section class="container my-4">
+        <div class="row text-center">
+          <h2>Have Questions?</h2>
+        </div>
+      </section>
+
+      <div class="btn main-btn rounded-0 py-3 px-4 mb-5">Contact Us!</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2024 DecorShop. All rights reserved.</p>
+      <h5>Designed By Rufina</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggler = document.getElementById("navbarToggler");
+
+        toggler.addEventListener("click", function () {
+          this.classList.toggle("open");
+        });
+      });
+
+      window.addEventListener("scroll", function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // JavaScript to toggle between pages
+      document
+        .getElementById("showProducts")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Show products and hide others
+          document.getElementById("products").style.display = "block";
+          document.getElementById("home").style.display = "none";
+          document.getElementById("contactUs").style.display = "none";
+        });
+
+      document
+        .getElementById("showHome")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Show home and hide others
+          document.getElementById("home").style.display = "block";
+          document.getElementById("products").style.display = "none";
+          document.getElementById("contactUs").style.display = "none";
+        });
+
+      document
+        .getElementById("showContactUs")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Show contact-us and hide others
+          document.getElementById("contactUs").style.display = "block";
+          document.getElementById("home").style.display = "none";
+          document.getElementById("products").style.display = "none";
+        });
+
+      const products = [
+        {
+          id: 1,
+          name: "Armchair with Head Rester",
+          category: "Armchair",
+          price: 120,
+          offerPrice: 100,
+          img: "images/chair1.jpg",
+          offer: true,
+        },
+        {
+          id: 2,
+          name: "Beige Living Room Sofa",
+          category: "Sofa",
+          price: 150,
+          offerPrice: 130,
+          img: "images/sofa1.jpg",
+          offer: true,
+        },
+        {
+          id: 3,
+          name: "Classic Wooden Table",
+          category: "Stool",
+          price: 80,
+          offerPrice: 70,
+          img: "images/table1.jpg",
+          offer: false,
+        },
+        {
+          id: 4,
+          name: "Table",
+          category: "Dining Table for Two",
+          price: 300,
+          offerPrice: 270,
+          img: "images/table2.jpg",
+          offer: false,
+        },
+        {
+          id: 5,
+          name: "Corner Study Table with Chair",
+          category: "Study table",
+          price: 120,
+          offerPrice: 100,
+          img: "images/table3.jpg",
+          offer: true,
+        },
+        {
+          id: 6,
+          name: "Desktop Table with Drawers",
+          category: "Computer Table",
+          price: 150,
+          offerPrice: 130,
+          img: "images/computer-table2.jpg",
+          offer: true,
+        },
+        {
+          id: 7,
+          name: "Fancy Chairs",
+          category: "Sofa",
+          price: 80,
+          offerPrice: 70,
+          img: "images/chairs2.jpg",
+          offer: false,
+        },
+        {
+          id: 8,
+          name: "Computer Table with Office Chair",
+          category: "Computer table",
+          price: 300,
+          offerPrice: 270,
+          img: "images/table4.jpg",
+          offer: false,
+        },
+        // Add more products here...
+      ];
+
+      let cart = [];
+
+      // Function to render products
+      function renderProducts(products) {
+        const productGrid = document.getElementById("productGrid");
+        productGrid.innerHTML = "";
+        products.forEach((product) => {
+          const productCard = `
+      <div class="col-12 col-md-4 col-lg-3 mb-4">
+        <div class="product-card">
+          ${product.offer ? '<div class="offer-badge">Offer!</div>' : ""}
+          <div class="product-image"><img src="${product.img}" alt="${
+            product.name
+          }" class="img-fluid"></div>
+          <div class="product-brief me-4">
+            <small style="color: #7e7e7e;">${product.category}</small>
+          <h6 class="text-nowrap text-truncate fw-bold fs-12 fs-md-4 fs-lg-3" style="color: rgb(188,121,59);">${
+            product.name
+          }</h6>
+          ${
+            product.offer
+              ? `<p><span class="price">$${product.price}</span> <span class="price-new">$${product.offerPrice}</span></p>`
+              : `<p class="price-new">$${product.price}</p>`
+          }
+              <div class="d-flex align-items-center justify-content-end mt-2 mb-2">
+                    <button class="btn main-btn rounded-0 text-nowrap">Add to Cart</button>
+                </div>
+              </div>
+          <div class="quick-view" onclick="quickView(${
+            product.id
+          })"><i class="fa-solid fa-eye"></i></div>
+        </div>
+      </div>
+    `;
+          productGrid.innerHTML += productCard;
+        });
+      }
+
+      // Initial rendering of all products
+      renderProducts(products);
+
+      // Function to search products
+      document.getElementById("searchBar").addEventListener("keyup", (e) => {
+        const searchString = e.target.value.toLowerCase();
+        const filteredProducts = products.filter((product) =>
+          product.name.toLowerCase().includes(searchString)
+        );
+        renderProducts(filteredProducts);
+      });
+    </script>
+  </body>
+</html>
