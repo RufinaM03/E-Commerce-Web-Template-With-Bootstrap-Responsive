@@ -31,6 +31,7 @@ PRODUCTS PAGE
 ![image](https://github.com/user-attachments/assets/fa440fbf-63ca-423c-ab56-3c746d16c26c)
 
 PRODUCTS PAGE - mobile viewport
+
 ![image](https://github.com/user-attachments/assets/1235a84c-ba15-45d1-9946-9355ae4c8d9c)
 ![image](https://github.com/user-attachments/assets/c0ecc38f-bf3d-4044-843c-2dfe9e5b5576)
 
@@ -48,6 +49,7 @@ CONTACT PAGE
 ![image](https://github.com/user-attachments/assets/f836ccfb-737d-4d2f-8a71-03f534be41a2)
 
 CONTACT PAGE - mobile viewport
+
 ![image](https://github.com/user-attachments/assets/6a7bfcdc-7f22-4ca8-9f98-1fc68ab0a504)
 ![image](https://github.com/user-attachments/assets/ff2e736a-a745-4ba5-a627-a1927d21b61e)
 
