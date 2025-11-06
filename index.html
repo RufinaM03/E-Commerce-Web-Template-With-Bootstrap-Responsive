@@ -1292,7 +1292,11 @@
               : `<p class="price-new">$${product.price}</p>`
           }
               <div class="d-flex align-items-center justify-content-end mt-2 mb-2">
-                    <button class="btn main-btn rounded-0 text-nowrap">Add to Cart</button>
+                <button 
+                onclick="addToCart(${product.id}, '${product.name}', ${product.offer ? product.offerPrice : product.price})" 
+                class="btn main-btn rounded-0 text-nowrap">
+                Add to Cart
+                </button>
                 </div>
               </div>
           <div class="quick-view" onclick="quickView(${
@@ -1317,5 +1321,18 @@
         renderProducts(filteredProducts);
       });
     </script>
+<script>
+async function addToCart(product_id, name, price) {
+  const res = await fetch("http://127.0.0.1:8000/add_to_cart", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ product_id, name, price })
+  });
+  const data = await res.json();
+  alert(data.message);
+}
+</script>
+
   </body>
 </html>
+
